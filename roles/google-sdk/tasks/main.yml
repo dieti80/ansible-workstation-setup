@@ -1,0 +1,27 @@
+- name: Add Google GPG key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    keyring: /usr/share/keyrings/cloud.google.gpg
+    state: present
+
+- apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main
+    state: present
+    filename: google-cloud-sdk
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: install required packages for google sdk
+  package:
+    name:
+    - apt-transport-https
+    - ca-certificates
+    - gnupg
+    state: present
+    update_cache: yes
+
+- name: install required packages for google sdk
+  package:
+    name:
+    - google-cloud-sdk
+    state: present
+    update_cache: yes

@@ -1,0 +1,5 @@
+- name: install keepass
+  package:
+    name: keepass2
+    state: present
+

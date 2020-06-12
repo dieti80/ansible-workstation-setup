@@ -9,3 +9,6 @@
     - kubectl
     - minikube
     - helm
+    - google-sdk
+    - keepass
+    - visualvm

@@ -20,7 +20,7 @@
     state: latest
     update_cache: yes
 
-- name: Add the current user to group 'docker'
+- name: Add user to group 'docker'
   user:
     name: "{{ansible_user}}"
     group: docker
