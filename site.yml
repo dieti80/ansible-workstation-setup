@@ -5,10 +5,13 @@
     - common
     - chrome
     - spotify
+    - keepass
     - docker
     - kubectl
     - minikube
     - helm
     - google-sdk
-    - keepass
     - visualvm
+    - intellij
+    - visual-studio
+    - rust
