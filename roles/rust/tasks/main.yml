@@ -16,7 +16,3 @@
     path: "{{ rustup_dest }}"
     state: touch
     mode: u=rwx,g=rx,o=rx
-
-- name: Execute rustup
-  shell: "{{ rustup_dest }} -y --quiet --profile complete"
-  when: download.changed

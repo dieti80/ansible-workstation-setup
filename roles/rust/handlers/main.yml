@@ -1,0 +1,4 @@
+---
+- name: Execute rustup
+  command: "{{ rustup_dest }} -y --quiet --profile complete"
+  when: download.changed
