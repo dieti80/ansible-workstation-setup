@@ -44,10 +44,15 @@
   register: intellij_png_results
 
 - set_fact:
-    idea_exec_path: "{{ intellij_exec_results.files[0].path}}"
+    idea_exec_path: "{{ intellij_exec_results.files[0].path }}"
 
 - set_fact:
-    idea_png_path: "{{ intellij_png_results.files[0].path}}"
+    idea_png_path: "{{ intellij_png_results.files[0].path }}"
+
+- name: Create desktop shortcut
+  template:
+    src: idea.desktop.j2
+    dest: /usr/share/applications/idea.desktop
 
 - name: Increase the max number of watched files
   lineinfile:
