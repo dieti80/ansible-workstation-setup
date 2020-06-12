@@ -1,5 +1,7 @@
 # Linux developer workstation setup
-![](https://github.com/orltom/ansible-workstation-setup/workflows/Ansible%20Lint/badge.svg)
+![](https://github.com/orltom/ansible-workstation-setup/workflows/Ansible%20Check/badge.svg)
+
+![](https://github.com/orltom/ansible-workstation-setup/workflows/Ansible%20Ubuntu%20Check/badge.svg)
 
 Setup my developer workstation with ansible.
 
