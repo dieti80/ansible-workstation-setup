@@ -1,4 +1,5 @@
-- apt_repository:
+- name: register spotify apt repository
+  apt_repository:
     repo: deb http://repository.spotify.com stable non-free
     state: present
     filename: spotify

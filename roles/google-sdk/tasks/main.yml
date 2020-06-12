@@ -4,7 +4,8 @@
     keyring: /usr/share/keyrings/cloud.google.gpg
     state: present
 
-- apt_repository:
+- name: register google cloud sdk apt repository
+  apt_repository:
     repo: deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main
     state: present
     filename: google-cloud-sdk

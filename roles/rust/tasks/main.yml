@@ -7,14 +7,14 @@
 - name: Download rust up
   get_url:
     url: https://sh.rustup.rs
-    dest: "{{rustup_dest}}"
+    dest: "{{ rustup_dest }}"
     mode: '0440'
 
 - name: chmod of rustup.sh
   file:
-    path: "{{rustup_dest}}"
+    path: "{{ rustup_dest }}"
     state: touch
     mode: u=rwx,g=rx,o=rx
 
 - name: Execute rustup
-  shell: "{{rustup_dest}} -y --quiet --profile complete"
+  shell: "{{ rustup_dest }} -y --quiet --profile complete"

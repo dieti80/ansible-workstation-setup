@@ -18,17 +18,17 @@
       - tcpdump
       - netcat-openbsd
       - iftop
-    state: latest
+    state: present
     update_cache: yes
 
 - name: Install developer tools
   package:
     name:
       - build-essential
-      - "openjdk-{{openjdk_version}}-jdk"
-      - "openjdk-{{openjdk_version}}-doc"
-      - "openjdk-{{openjdk_version}}-jre-headless"
-      - "openjdk-{{openjdk_version}}-source"
-    state: latest
+      - "openjdk-{{ openjdk_version }}-jdk"
+      - "openjdk-{{ openjdk_version }}-doc"
+      - "openjdk-{{ openjdk_version }}-jre-headless"
+      - "openjdk-{{ openjdk_version }}-source"
+    state: present
     update_cache: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
