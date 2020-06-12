@@ -9,7 +9,6 @@
     - tar
     - coreutils
     state: present
-    update_cache: yes
 
 - name: Install network tools
   package:
@@ -19,7 +18,6 @@
       - netcat-openbsd
       - iftop
     state: present
-    update_cache: yes
 
 - name: Install developer tools
   package:
@@ -30,5 +28,4 @@
       - "openjdk-{{ openjdk_version }}-jre-headless"
       - "openjdk-{{ openjdk_version }}-source"
     state: present
-    update_cache: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
