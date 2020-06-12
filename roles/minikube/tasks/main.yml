@@ -1,0 +1,16 @@
+---
+- name: Install virtualbox system packages
+  apt:
+    name: virtualbox
+    state: present
+
+- name: download minikube binary
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: /usr/local/bin/minikube
+
+- name: make minikube executable
+  file:
+    path:  /usr/local/bin/minikube
+    state: touch
+    mode: u=rwx,g=rx,o=rx

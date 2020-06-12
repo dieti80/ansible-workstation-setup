@@ -1,0 +1,11 @@
+- apt_repository:
+    repo: deb http://repository.spotify.com stable non-free
+    state: present
+    filename: spotify
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: install spotify
+  package:
+    name: spotify-client
+    update_cache: yes
+    state: present

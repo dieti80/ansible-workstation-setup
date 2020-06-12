@@ -1,0 +1,20 @@
+- name: install common packages
+  package:
+    name:
+    - vim
+    - git
+    - meld
+    - diffutils
+    - unzip
+    - coreutils
+    state: present
+
+- name: Install network tools
+  apt:
+    pkg:
+      - wireshark
+      - tcpdump
+      - netcat-openbsd
+      - iftop
+    state: latest
+    update_cache: yes
