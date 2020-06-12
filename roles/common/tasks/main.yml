@@ -6,15 +6,29 @@
     - meld
     - diffutils
     - unzip
+    - tar
     - coreutils
     state: present
+    update_cache: yes
 
 - name: Install network tools
-  apt:
-    pkg:
+  package:
+    name:
       - wireshark
       - tcpdump
       - netcat-openbsd
       - iftop
     state: latest
     update_cache: yes
+
+- name: Install developer tools
+  package:
+    name:
+      - build-essential
+      - "openjdk-{{openjdk_version}}-jdk"
+      - "openjdk-{{openjdk_version}}-doc"
+      - "openjdk-{{openjdk_version}}-jre-headless"
+      - "openjdk-{{openjdk_version}}-source"
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

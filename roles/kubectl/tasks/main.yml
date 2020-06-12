@@ -10,6 +10,6 @@
     state: present
 
 - name: Install kubectl system packages
-  apt:
+  package:
     name: kubectl
     state: present

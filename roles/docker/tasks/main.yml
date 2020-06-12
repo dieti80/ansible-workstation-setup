@@ -10,8 +10,8 @@
     state: present
 
 - name: Install required system packages
-  apt:
-    pkg:
+  package:
+    name:
       - apt-transport-https
       - ca-certificates
       - curl
