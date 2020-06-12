@@ -9,6 +9,7 @@
     url: https://sh.rustup.rs
     dest: "{{ rustup_dest }}"
     mode: '0440'
+  register: download
 
 - name: chmod of rustup.sh
   file:
@@ -18,3 +19,4 @@
 
 - name: Execute rustup
   shell: "{{ rustup_dest }} -y --quiet --profile complete"
+  when: download.changed

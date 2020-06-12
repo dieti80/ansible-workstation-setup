@@ -63,6 +63,8 @@
     path: /etc/sysctl.conf
     line: "fs.inotify.max_user_watches = 524288"
     backup: yes
+  register: systctl
 
 - name: reload sysctl
   command: sysctl -p
+  when: systctl.changed

@@ -1,14 +1,16 @@
-# Purpose
+# Linux developer workstation setup
+![](https://github.com/orltom/ansible-workstation-setup/workflows/Ansible%20Lint/badge.svg)
+
 Setup my developer workstation with ansible.
 
-# Prerequisite
+## Prerequisite
 * python
 * ansible
 
-# Usage
+## Usage
 ```
 ansible-playbook site.yml --ask-become-pass
 ```
 
-# Disclaimer
+## Disclaimer
 This software is provided as source code under an MIT license (see LICENSE)
