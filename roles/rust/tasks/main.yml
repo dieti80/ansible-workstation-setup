@@ -1,0 +1,20 @@
+---
+- name: Install build tools for Rust
+  package:
+    name: build-essential
+    state: present
+
+- name: Download rust up
+  get_url:
+    url: https://sh.rustup.rs
+    dest: "{{rustup_dest}}"
+    mode: '0440'
+
+- name: chmod of rustup.sh
+  file:
+    path: "{{rustup_dest}}"
+    state: touch
+    mode: u=rwx,g=rx,o=rx
+
+- name: Execute rustup
+  shell: "{{rustup_dest}} -y --quiet --profile complete"

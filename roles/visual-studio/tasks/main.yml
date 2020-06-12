@@ -1,5 +1,5 @@
 ---
-- name: Add Google GPG key
+- name: Add Microsoft ASC
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
@@ -10,7 +10,7 @@
     state: present
     filename: visual-studio
 
-- name: install required packages for visual studio code
+- name: install required packages for Visual Studio Code
   package:
     name:
       - apt-transport-https
@@ -18,7 +18,7 @@
     state: present
     update_cache: yes
 
-- name: install required packages for gvisual studio code
+- name: install required packages for Visual Studio Code
   package:
     name: code
     state: present

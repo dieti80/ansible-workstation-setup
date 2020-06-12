@@ -1,8 +1,9 @@
 # Purpose
 Setup developer workstation with ansible.
 
-# Prerequists
-0 
+# Prerequisite
+* python
+* ansible
 
 # Usage
 ```
