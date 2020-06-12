@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - useres: action/checkout@v2
+    - uses: actions/checkout@v2
     - name: Lint Anbile Playbox
       uses: ansible/ansible-lint-action@master
       with:
