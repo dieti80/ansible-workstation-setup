@@ -1,0 +1,59 @@
+- name: Find latest version
+  uri:
+    url: "https://data.services.jetbrains.com/products/releases?code=IIU%2CIIC&latest=true&type=release"
+    return_content: yes
+    validate_certs: no
+    body_format: json
+  register: intellij_releases_response
+
+- set_fact:
+    intellij_version: "{{ intellij_releases_response.json.IIU.0.version }}"
+
+- name: crate a directory
+  become: yes
+  file:
+    path: "{{intellij_dest}}"
+    state: directory
+    mode: 0755
+
+- name: Download intellij
+  unarchive:
+    src: "https://download.jetbrains.com/idea/ideaIU-{{intellij_version}}.tar.gz"
+    dest: "{{intellij_dest}}"
+    remote_src: yes
+
+- file:
+    path: "{{intellij_dest}}"
+    state: directory
+    recurse: yes
+    owner: "{{ansible_user}}"
+    group: "{{ansible_user}}"
+
+- name: Find intellij exec file
+  find:
+    paths: "{{intellij_dest}}"
+    recurse: yes
+    patterns: 'idea.sh'
+  register: intellij_exec_results
+
+- name: Find intellij png file
+  find:
+    paths: "{{intellij_dest}}"
+    recurse: yes
+    patterns: 'idea.png'
+  register: intellij_png_results
+
+- set_fact:
+    idea_exec_path: "{{ intellij_exec_results.files[0].path}}"
+
+- set_fact:
+    idea_png_path: "{{ intellij_png_results.files[0].path}}"
+
+- name: Increase the max number of watched files
+  lineinfile:
+    path: /etc/sysctl.conf
+    line: "fs.inotify.max_user_watches = 524288"
+    backup: yes
+
+- name: Reload sysctl
+  command: sysctl -p
