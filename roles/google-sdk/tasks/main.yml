@@ -1,10 +1,10 @@
-- name: Add Google GPG key
+- name: Add Google cloud APT key
   apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     keyring: /usr/share/keyrings/cloud.google.gpg
     state: present
 
-- name: register google cloud sdk apt repository
+- name: register Google cloud sdk apt repository
   apt_repository:
     repo: deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main
     state: present

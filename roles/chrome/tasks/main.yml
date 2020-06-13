@@ -1,3 +1,8 @@
+- name: Add Google Chrome key
+  apt_key:
+    url:  https://dl.google.com/linux/linux_signing_key.pub
+    state: present
+
 - name: register google chrome apt repository
   apt_repository:
     repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
