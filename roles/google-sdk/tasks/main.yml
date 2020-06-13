@@ -20,9 +20,8 @@
     state: present
     update_cache: yes
 
-- name: install required packages for google sdk
+- name: install google sdk
   package:
-    name:
-    - google-cloud-sdk
+    name: google-cloud-sdk
     state: present
     update_cache: yes
