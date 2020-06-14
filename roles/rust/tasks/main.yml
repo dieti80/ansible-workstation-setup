@@ -3,6 +3,9 @@
   package:
     name: build-essential
     state: present
+  tags:
+    - development
+    - rust
 
 - name: Download rust up
   get_url:
@@ -10,9 +13,15 @@
     dest: "{{ rustup_dest }}"
     mode: '0440'
   register: download
+  tags:
+    - development
+    - rust
 
 - name: chmod of rustup.sh
   file:
     path: "{{ rustup_dest }}"
     state: touch
     mode: u=rwx,g=rx,o=rx
+  tags:
+    - development
+    - rust

@@ -3,14 +3,23 @@
   apt_key:
     url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
     state: present
+  tags:
+    - visualvm
+    - java
 
 - name: Add VirtualBox apt repository
   apt_repository:
     repo: "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
     filename: virtualbox
     state: present
+  tags:
+    - visualvm
+    - java
 
 - name: Install visualvm
   package:
     name: visualvm
     state: present
+  tags:
+    - visualvm
+    - java

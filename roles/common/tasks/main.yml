@@ -9,6 +9,8 @@
     - tar
     - coreutils
     state: present
+  tags:
+    - system
 
 - name: Install network tools
   package:
@@ -18,3 +20,5 @@
       - netcat-openbsd
       - iftop
     state: present
+  tags:
+    - system

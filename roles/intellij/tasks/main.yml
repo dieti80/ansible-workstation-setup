@@ -5,10 +5,18 @@
     validate_certs: no
     body_format: json
   register: intellij_releases_response
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: extract intellij version
   set_fact:
     intellij_version: "{{ intellij_releases_response.json.IIU.0.version }}"
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: crate a directory
   become: yes
@@ -16,12 +24,20 @@
     path: "{{ intellij_dest }}"
     state: directory
     mode: 0755
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: download intellij
   unarchive:
     src: "https://download.jetbrains.com/idea/ideaIU-{{ intellij_version }}.tar.gz"
     dest: "{{ intellij_dest }}"
     remote_src: yes
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: "change owner ship of intellij"
   file:
@@ -30,6 +46,10 @@
     recurse: yes
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: find intellij exec file
   find:
@@ -37,6 +57,10 @@
     recurse: yes
     patterns: 'idea.sh'
   register: intellij_exec_results
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: find intellij png file
   find:
@@ -44,19 +68,35 @@
     recurse: yes
     patterns: 'idea.png'
   register: intellij_png_results
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: extract intellij exec path
   set_fact:
     idea_exec_path: "{{ intellij_exec_results.files[0].path }}"
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: extract intellij img path
   set_fact:
     idea_png_path: "{{ intellij_png_results.files[0].path }}"
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: create desktop shortcut
   template:
     src: idea.desktop.j2
     dest: /usr/share/applications/idea.desktop
+  tags:
+    - development
+    - ide
+    - intellij
 
 - name: increase the max number of watched files
   lineinfile:
@@ -64,3 +104,7 @@
     line: "fs.inotify.max_user_watches = 524288"
     backup: yes
   register: systctl
+  tags:
+    - development
+    - ide
+    - intellij

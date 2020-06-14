@@ -3,14 +3,26 @@
   apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     state: present
+  tags:
+    - container
+    - kubernetes
+    - kubectl
 
 - name: Add Kubernetes APT repository
   apt_repository:
     repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
     filename: kubernetes
     state: present
+  tags:
+    - container
+    - kubernetes
+    - kubectl
 
 - name: Install kubectl system packages
   package:
     name: kubectl
     state: present
+  tags:
+    - container
+    - kubernetes
+    - kubectl

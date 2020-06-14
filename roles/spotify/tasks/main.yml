@@ -2,16 +2,21 @@
   apt_key:
     url:  https://download.spotify.com/debian/pubkey.gpg
     state: present
+  tags:
+    - spotify
 
 - name: register spotify apt repository
   apt_repository:
     repo: deb http://repository.spotify.com stable non-free
     state: present
     filename: spotify
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags:
+    - spotify
 
 - name: install spotify
   package:
     name: spotify-client
     update_cache: yes
     state: present
+  tags:
+    - spotify

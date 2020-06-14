@@ -3,14 +3,26 @@
   apt:
     name: virtualbox
     state: present
+  tags:
+    - container
+    - kubernetes
+    - virtualbox
 
 - name: download minikube binary
   get_url:
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     dest: /usr/local/bin/minikube
+  tags:
+    - container
+    - kubernetes
+    - minikube
 
 - name: make minikube executable
   file:
     path:  /usr/local/bin/minikube
     state: touch
     mode: u=rwx,g=rx,o=rx
+  tags:
+    - container
+    - kubernetes
+    - minikube

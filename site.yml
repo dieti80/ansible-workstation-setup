@@ -11,6 +11,7 @@
     - minikube
     - helm
     - google-sdk
+    - java
     - visualvm
     - intellij
     - visual-studio

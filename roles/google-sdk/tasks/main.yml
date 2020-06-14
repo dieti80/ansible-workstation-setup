@@ -3,13 +3,18 @@
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     keyring: /usr/share/keyrings/cloud.google.gpg
     state: present
+  tags:
+    - cloud
+    - gcp
 
 - name: register Google cloud sdk apt repository
   apt_repository:
     repo: deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main
     state: present
     filename: google-cloud-sdk
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags:
+    - cloud
+    - gcp
 
 - name: install required packages for google sdk
   package:
@@ -19,9 +24,15 @@
     - gnupg
     state: present
     update_cache: yes
+  tags:
+    - cloud
+    - gcp
 
 - name: install google sdk
   package:
     name: google-cloud-sdk
     state: present
     update_cache: yes
+  tags:
+    - cloud
+    - gcp

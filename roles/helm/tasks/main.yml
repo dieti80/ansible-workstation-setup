@@ -5,12 +5,18 @@
     path: "{{ helm_dest }}"
     state: directory
     mode: 0755
+  tags:
+    - container
+    - helm
 
 - name: download helm binary
   unarchive:
     src: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
     dest: "{{ helm_dest }}"
     remote_src: yes
+  tags:
+    - container
+    - helm
 
 - name: change ownership of helm directory
   file:
@@ -19,6 +25,9 @@
     recurse: yes
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
+  tags:
+    - container
+    - helm
 
 - name: create a symbolic link
   file:
@@ -27,3 +36,6 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     state: link
+  tags:
+    - container
+    - helm

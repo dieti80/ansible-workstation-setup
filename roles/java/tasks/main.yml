@@ -8,4 +8,7 @@
       - "openjdk-{{ openjdk_version }}-jre-headless"
       - "openjdk-{{ openjdk_version }}-source"
     state: present
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags:
+    - development
+    - java
+    - jdk

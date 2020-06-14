@@ -3,11 +3,17 @@
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
+  tags:
+    - container
+    - docker
 
 - name: Add Docker APT repository
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
     state: present
+  tags:
+    - container
+    - docker
 
 - name: Install required system packages
   package:
@@ -19,8 +25,14 @@
       - docker-ce
     state: present
     update_cache: yes
+  tags:
+    - container
+    - docker
 
 - name: Add user to group 'docker'
   user:
     name: "{{ ansible_user }}"
     group: docker
+  tags:
+    - container
+    - docker

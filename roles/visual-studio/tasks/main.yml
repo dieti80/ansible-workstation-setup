@@ -3,13 +3,17 @@
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
+  tags:
+    - ide
 
 - name: Add Visual Studio Code apt repository
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     state: present
     filename: visual-studio
-
+  tags:
+    - ide
+    -
 - name: install required packages for Visual Studio Code
   package:
     name:
@@ -17,9 +21,13 @@
       - software-properties-common
     state: present
     update_cache: yes
+  tags:
+    - ide
 
 - name: install required packages for Visual Studio Code
   package:
     name: code
     state: present
     update_cache: yes
+  tags:
+    - ide

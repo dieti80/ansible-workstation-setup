@@ -2,4 +2,6 @@
   package:
     name: keepass2
     state: present
-
+  tags:
+    - system
+    - security
