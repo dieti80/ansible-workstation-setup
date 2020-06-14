@@ -92,7 +92,7 @@
 - name: create desktop shortcut
   template:
     src: idea.desktop.j2
-    dest: /usr/share/applications/idea.desktop
+    dest: "/home/{{ ansible_user }}/.local/share/applications/idea.desktop"
   tags:
     - development
     - ide

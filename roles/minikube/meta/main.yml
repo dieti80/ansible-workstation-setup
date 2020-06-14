@@ -1,3 +1,3 @@
 ---
 dependencies:
-  - role: kubectl
+  - role: '/roles/kubectl'
