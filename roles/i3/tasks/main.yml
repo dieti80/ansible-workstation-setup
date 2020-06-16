@@ -1,0 +1,10 @@
+- name: install common packages
+  package:
+    name:
+    - rofi
+    - dunst
+    - compton.conf
+    state: present
+  tags:
+    - i3
+
