@@ -3,8 +3,18 @@
     name:
     - rofi
     - dunst
-    - compton.conf
+    - compton
+    - powerline
+    - fonts-powerline
+    - fonts-font-awesome
     state: present
   tags:
     - i3
 
+- name: Install shell
+  package:
+    name:
+      - zsh
+    state: present
+  tags:
+    - system
