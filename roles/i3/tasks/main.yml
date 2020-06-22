@@ -27,7 +27,13 @@
   tags:
     - system
 
+- name: check if ohmyzsh directory exists
+  stat:
+    path: "/home/{{ ansible_user }}/.oh-my-zsh"
+  register: ohmyzsh-directory
+
 - name: clone omyzsh
   shell: git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+  when: ohmyzsh-directory.stat.exists == False
   tags:
     - system

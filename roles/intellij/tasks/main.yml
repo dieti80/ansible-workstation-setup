@@ -27,23 +27,23 @@
     - ide
     - intellij
 
-- name: download intellij
-  unarchive:
-    src: "https://download.jetbrains.com/idea/ideaIU-{{ intellij_version }}.tar.gz"
-    dest: "{{ intellij_dest }}"
-    remote_src: yes
-  tags:
-    - development
-    - ide
-    - intellij
-  when: not intellij.stat.exists
-
 - name: crate a directory
   become: yes
   file:
     path: "{{ intellij_dest }}"
     state: directory
     mode: 0755
+  tags:
+    - development
+    - ide
+    - intellij
+  when: not intellij.stat.exists
+
+- name: download intellij
+  unarchive:
+    src: "https://download.jetbrains.com/idea/ideaIU-{{ intellij_version }}.tar.gz"
+    dest: "{{ intellij_dest }}"
+    remote_src: yes
   tags:
     - development
     - ide

@@ -1,4 +1,52 @@
+- name: check if config directory exists
+  stat:
+    path: "/home/{{ ansible_user }}/configs"
+  register: dot-files-directory
+
 - name: clone dot-files
   shell: git clone https://github.com/orltom/linux-user-configs ~/configs
+  when: dot-files-directory.stat.exists == False
+  tags:
+    - system
+
+- name: add config links
+  file:
+    src: "/home/{{ ansible_user }}/configs/.{{ item }}"
+    dest: "/home/{{ ansible_user }}/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+  loop:
+    - .vimrc
+    - .bashrc
+    - .zshrc
+  tags:
+    - system
+
+- name: add user bin command links
+  file:
+    src: "/home/{{ ansible_user }}/configs/bin/{{ item }}"
+    dest: "/home/{{ ansible_user }}/bin/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+  loop:
+    - gitlastcommit
+    - gitupdatebranch
+    - change-keyboard-layout
+  tags:
+    - system
+
+- name: add .config programm links
+  file:
+    src: "/home/{{ ansible_user }}/configs/.config/{{ item }}"
+    dest: "/home/{{ ansible_user }}/.config/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+  loop:
+    - i3
+    - rofi
+    - dunst
   tags:
     - system
