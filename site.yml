@@ -3,6 +3,7 @@
   become: yes
   roles:
     - common
+    - system
     - chrome
     - spotify
     - keepass

@@ -1,26 +1,33 @@
 - name: install common packages
   package:
     name:
-    - rofi
-    - dunst
-    - compton
-    - powerline
-    - fonts-powerline
-    - fonts-font-awesome
+      - i3
+      - rofi
+      - dunst
+      - compton
+      - powerline
+      - fonts-powerline
+      - fonts-font-awesome
     state: present
   tags:
     - i3
 
-- name: Install shell
+- name: Install shell and extensions
   package:
     name:
       - zsh
+      - fonts-powerline
+      - fonts-font-awesome
     state: present
   tags:
     - system
 
 - name: set ZSH as default terminal
   shell: chsh -s $(which zsh)
+  tags:
+    - system
 
 - name: clone omyzsh
   shell: git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+  tags:
+    - system

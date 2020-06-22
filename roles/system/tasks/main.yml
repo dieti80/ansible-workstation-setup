@@ -1,0 +1,4 @@
+- name: clone dot-files
+  shell: git clone https://github.com/orltom/linux-user-configs ~/configs
+  tags:
+    - system
