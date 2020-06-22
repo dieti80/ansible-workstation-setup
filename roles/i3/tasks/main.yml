@@ -18,3 +18,9 @@
     state: present
   tags:
     - system
+
+- name: set ZSH as default terminal
+  shell: chsh -s $(which zsh)
+
+- name: clone omyzsh
+  shell: git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh

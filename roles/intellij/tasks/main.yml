@@ -98,6 +98,12 @@
     - ide
     - intellij
 
+- name: create idea link
+  file:
+    src: "{{ intellij_exec_results }}"
+    dest: /usr/bin/idea
+    state: link
+
 - name: increase the max number of watched files
   lineinfile:
     path: /etc/sysctl.conf

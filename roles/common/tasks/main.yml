@@ -9,6 +9,7 @@
     - unzip
     - tar
     - coreutils
+    - wget
     state: present
   tags:
     - system
@@ -23,4 +24,3 @@
     state: present
   tags:
     - system
-
