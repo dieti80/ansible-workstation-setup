@@ -36,6 +36,12 @@
   tags:
     - system
 
+- name: Create bin directory if it does not exist
+  file:
+    path: "{{ home_directory }}/bin"
+    state: directory
+    mode: "0750"
+
 - name: add user bin command links
   file:
     src: "{{ home_directory }}/configs/bin/{{ item }}"
