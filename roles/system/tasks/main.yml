@@ -1,11 +1,13 @@
 - name: check if config directory exists
   stat:
     path: "/home/{{ ansible_user }}/configs"
-  register: dot-files-directory
+  register: dot_files_directory
 
 - name: clone dot-files
-  shell: git clone https://github.com/orltom/linux-user-configs ~/configs
-  when: not dot-files-directory.stat.exists
+  git:
+    repo: "https://github.com/orltom/linux-user-configs"
+    dest: "/home/{{ ansible_user }}/configs"
+  when: not dot_files_directory.stat.exists
   tags:
     - system
 

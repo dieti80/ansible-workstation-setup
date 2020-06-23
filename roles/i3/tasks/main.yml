@@ -30,10 +30,12 @@
 - name: check if ohmyzsh directory exists
   stat:
     path: "/home/{{ ansible_user }}/.oh-my-zsh"
-  register: ohmyzsh-directory
+  register: ohmyzsh_directory
 
 - name: clone omyzsh
-  shell: git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-  when: ohmyzsh-directory.stat.exists == False
+  git:
+    repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
+    dest: "/home/{{ ansible_user }}/.oh-my-zsh"
+  when: not ohmyzsh_directory.stat.exists
   tags:
     - system
