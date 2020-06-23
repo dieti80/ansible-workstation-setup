@@ -2,6 +2,8 @@
   stat:
     path: "{{ home_directory }}/configs"
   register: dot_files_directory
+  tags:
+    - system
 
 - name: clone dot-files
   git:
@@ -21,6 +23,8 @@
     - .vimrc
     - .bashrc
     - .zshrc
+  tags:
+    - system
 
 - name: add config links
   file:
@@ -41,6 +45,8 @@
     path: "{{ home_directory }}/bin"
     state: directory
     mode: "0750"
+  tags:
+    - system
 
 - name: add user bin command links
   file:
@@ -53,6 +59,14 @@
     - gitlastcommit
     - gitupdatebranch
     - change-keyboard-layout
+  tags:
+    - system
+
+- name: Create .config directory if it does not exist
+  file:
+    path: "{{ home_directory }}/.config"
+    state: directory
+    mode: "0750"
   tags:
     - system
 
