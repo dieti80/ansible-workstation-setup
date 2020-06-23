@@ -7,13 +7,14 @@
   git:
     repo: "https://github.com/orltom/linux-user-configs"
     dest: "/home/{{ ansible_user }}/configs"
+    refspec: '+refs/pull/*:refs/heads/*'
   when: not dot_files_directory.stat.exists
   tags:
     - system
 
 - name: add config links
   file:
-    src: "/home/{{ ansible_user }}/configs/.{{ item }}"
+    src: "/home/{{ ansible_user }}/configs/{{ item }}"
     dest: "/home/{{ ansible_user }}/{{ item }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"

@@ -36,6 +36,7 @@
   git:
     repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
     dest: "/home/{{ ansible_user }}/.oh-my-zsh"
+    refspec: '+refs/pull/*:refs/heads/*'
   when: not ohmyzsh_directory.stat.exists
   tags:
     - system
