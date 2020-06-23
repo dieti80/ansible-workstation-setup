@@ -1,21 +1,22 @@
 - name: check if config directory exists
   stat:
-    path: "/home/{{ ansible_user }}/configs"
+    path: "{{ home_directory }}/configs"
   register: dot_files_directory
 
 - name: clone dot-files
   git:
     repo: "https://github.com/orltom/linux-user-configs"
-    dest: "/home/{{ ansible_user }}/configs"
+    dest: "{{ home_directory }}/configs"
     refspec: '+refs/pull/*:refs/heads/*'
+    version: master
   when: not dot_files_directory.stat.exists
   tags:
     - system
 
 - name: add config links
   file:
-    src: "/home/{{ ansible_user }}/configs/{{ item }}"
-    dest: "/home/{{ ansible_user }}/{{ item }}"
+    src: "{{ home_directory }}/configs/{{ item }}"
+    dest: "{{ home_directory }}/{{ item }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     state: link
@@ -28,8 +29,8 @@
 
 - name: add user bin command links
   file:
-    src: "/home/{{ ansible_user }}/configs/bin/{{ item }}"
-    dest: "/home/{{ ansible_user }}/bin/{{ item }}"
+    src: "{{ home_directory }}/configs/bin/{{ item }}"
+    dest: "{{ home_directory }}/bin/{{ item }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     state: link
@@ -42,8 +43,8 @@
 
 - name: add .config programm links
   file:
-    src: "/home/{{ ansible_user }}/configs/.config/{{ item }}"
-    dest: "/home/{{ ansible_user }}/.config/{{ item }}"
+    src: "{{ home_directory }}/configs/.config/{{ item }}"
+    dest: "{{ home_directory }}/.config/{{ item }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     state: link

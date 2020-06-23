@@ -1,5 +1,7 @@
+#home_directory: /home/{{ ansible_user }}
+home_directory: /root/
 helm_dest: /opt/helm
 helm_version: 2.16.8
 openjdk_version: 11
-intellij_dest: /opt/ideaIU/
+intellij_dest: /opt/ideaIU
 rustup_dest: /tmp/rustup.sh
