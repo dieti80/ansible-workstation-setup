@@ -5,7 +5,7 @@
 
 - name: clone dot-files
   shell: git clone https://github.com/orltom/linux-user-configs ~/configs
-  when: dot-files-directory.stat.exists == False
+  when: not dot-files-directory.stat.exists
   tags:
     - system
 
