@@ -10,6 +10,7 @@
     - tar
     - coreutils
     - wget
+    - python3-pip
     state: present
   tags:
     - system

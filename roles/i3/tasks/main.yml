@@ -2,6 +2,7 @@
   package:
     name:
       - i3
+      - gdm3l
       - rofi
       - dunst
       - compton
@@ -11,6 +12,14 @@
     state: present
   tags:
     - i3
+
+- name: Insatll bumblebee-status
+  pip:
+    name:
+      - bumblebee-status
+      - configparser
+    executable: pip3.3
+    extra_args: --user
 
 - name: Install shell and extensions
   package:
