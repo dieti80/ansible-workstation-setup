@@ -2,7 +2,8 @@
   package:
     name:
       - i3
-      - gdm3l
+      - gnome-terimainal
+      - gdm3
       - rofi
       - dunst
       - compton
@@ -31,8 +32,16 @@
   tags:
     - system
 
+- name: check if ZSH exists
+  stat:
+    path: /usr/bin/zsh
+  register: zsh_path
+  tags:
+    - system
+
 - name: set ZSH as default terminal
   shell: chsh -s $(which zsh)
+  when: zsh_path.stat.exists
   tags:
     - system
 
@@ -40,6 +49,8 @@
   stat:
     path: "{{ home_directory }}/.oh-my-zsh"
   register: ohmyzsh_directory
+  tags:
+    - system
 
 - name: clone omyzsh
   git:

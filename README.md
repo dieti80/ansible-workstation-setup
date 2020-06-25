@@ -2,9 +2,9 @@
 ![](https://github.com/orltom/ansible-workstation-setup/workflows/Ansible%20Ubuntu%20Check/badge.svg)
 [![MIT License](https://raw.githubusercontent.com/orltom/ansible-workstation-setup/master/.github/license.svg?sanitize=true)](https://github.com/orltom/ansible-workstation-setup/blob/master/LICENSE)
 
-Basic developer workstation setup with ansible. Usage: 
+My personal developer workstation setup with ansible. Usage: 
 ```
-ansible-playbook site.yml --ask-become-pass
+ansible-playbook site.yml --user=FOO --ask-become-pass
 ```
 
 ## Prerequisite

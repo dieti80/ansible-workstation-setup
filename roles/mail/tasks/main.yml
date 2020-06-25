@@ -1,0 +1,9 @@
+---
+- name: install text email program
+  package:
+    name:
+      - mutt
+      - w3m
+    state: present
+  tags:
+    - email
