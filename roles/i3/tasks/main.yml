@@ -2,7 +2,7 @@
   package:
     name:
       - i3
-      - gnome-terimainal
+      - gnome-terminal
       - gdm3
       - rofi
       - dunst
@@ -11,6 +11,7 @@
       - fonts-powerline
       - fonts-font-awesome
     state: present
+    become: yes
   tags:
     - i3
 
@@ -29,6 +30,7 @@
       - fonts-powerline
       - fonts-font-awesome
     state: present
+    become: yes
   tags:
     - system
 
