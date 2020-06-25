@@ -33,6 +33,8 @@
     path: "{{ intellij_dest }}"
     state: directory
     mode: 0755
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
   tags:
     - development
     - ide
@@ -51,6 +53,7 @@
   when: not intellij.stat.exists
 
 - name: "change owner ship of intellij"
+  become: yes
   file:
     path: "{{ intellij_dest }}"
     state: directory
@@ -101,6 +104,7 @@
     - intellij
 
 - name: create desktop shortcut
+  become: yes
   template:
     src: idea.desktop.j2
     dest: "/usr/share/applications/idea.desktop"
@@ -110,6 +114,7 @@
     - intellij
 
 - name: create idea link
+  become: yes
   file:
     src: "{{ idea_exec_path }}"
     dest: /usr/bin/idea
@@ -118,6 +123,7 @@
     state: link
 
 - name: increase the max number of watched files
+  become: yes
   lineinfile:
     path: /etc/sysctl.conf
     line: "fs.inotify.max_user_watches = 524288"
