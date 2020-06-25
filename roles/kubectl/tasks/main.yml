@@ -1,14 +1,4 @@
 ---
-- name: Add Google GPG key
-  become: yes
-  apt_key:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    state: present
-  tags:
-    - container
-    - kubernetes
-    - kubectl
-
 - name: Add Kubernetes APT repository
   become: yes
   apt_repository:
