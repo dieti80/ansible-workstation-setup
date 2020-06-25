@@ -15,7 +15,7 @@
     filename: visual-studio
   tags:
     - ide
-    -
+
 - name: install required packages for Visual Studio Code
   become: yes
   package:
