@@ -1,5 +1,6 @@
 ---
 - name: Add Microsoft ASC
+  become: yes
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
@@ -7,6 +8,7 @@
     - ide
 
 - name: Add Visual Studio Code apt repository
+  become: yes
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     state: present
@@ -15,6 +17,7 @@
     - ide
     -
 - name: install required packages for Visual Studio Code
+  become: yes
   package:
     name:
       - apt-transport-https
@@ -25,6 +28,7 @@
     - ide
 
 - name: install required packages for Visual Studio Code
+  become: yes
   package:
     name: code
     state: present

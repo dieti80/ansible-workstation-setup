@@ -1,4 +1,5 @@
 - name: Add Google cloud APT key
+  become: yes
   apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     keyring: /usr/share/keyrings/cloud.google.gpg
@@ -8,6 +9,7 @@
     - gcp
 
 - name: register Google cloud sdk apt repository
+  become: yes
   apt_repository:
     repo: deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main
     state: present
@@ -17,6 +19,7 @@
     - gcp
 
 - name: install required packages for google sdk
+  become: yes
   package:
     name:
     - apt-transport-https
@@ -29,6 +32,7 @@
     - gcp
 
 - name: install google sdk
+  become: yes
   package:
     name: google-cloud-sdk
     state: present

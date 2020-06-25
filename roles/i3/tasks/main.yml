@@ -1,4 +1,5 @@
 - name: install common packages
+  become: yes
   package:
     name:
       - i3
@@ -11,7 +12,6 @@
       - fonts-powerline
       - fonts-font-awesome
     state: present
-    become: yes
   tags:
     - i3
 
@@ -24,13 +24,13 @@
     extra_args: --user
 
 - name: Install shell and extensions
+  become: yes
   package:
     name:
       - zsh
       - fonts-powerline
       - fonts-font-awesome
     state: present
-    become: yes
   tags:
     - system
 

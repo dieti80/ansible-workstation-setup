@@ -1,5 +1,6 @@
 ---
 - name: Add Oracle ASC key
+  become: yes
   apt_key:
     url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
     state: present
@@ -8,6 +9,7 @@
     - java
 
 - name: Add VirtualBox apt repository
+  become: yes
   apt_repository:
     repo: "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
     filename: virtualbox
@@ -17,6 +19,7 @@
     - java
 
 - name: Install visualvm
+  become: yes
   package:
     name: visualvm
     state: present
