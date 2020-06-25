@@ -1,5 +1,6 @@
 ---
 - name: install text email program
+  become: yes
   package:
     name:
       - mutt

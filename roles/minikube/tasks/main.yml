@@ -20,6 +20,7 @@
     - minikube
 
 - name: make minikube executable
+  become: yes
   file:
     path:  /usr/local/bin/minikube
     state: touch

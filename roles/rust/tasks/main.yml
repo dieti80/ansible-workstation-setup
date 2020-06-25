@@ -1,5 +1,6 @@
 ---
 - name: Install build tools for Rust
+  become: yes
   package:
     name: build-essential
     state: present
@@ -8,6 +9,7 @@
     - rust
 
 - name: Download rust up
+  become: yes
   get_url:
     url: https://sh.rustup.rs
     dest: "{{ rustup_dest }}"
@@ -18,6 +20,7 @@
     - rust
 
 - name: chmod of rustup.sh
+  become: yes
   file:
     path: "{{ rustup_dest }}"
     state: touch

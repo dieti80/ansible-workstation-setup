@@ -10,6 +10,7 @@
     - helm
 
 - name: download helm binary
+  become: yes
   unarchive:
     src: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
     dest: "{{ helm_dest }}"
@@ -19,6 +20,7 @@
     - helm
 
 - name: change ownership of helm directory
+  become: yes
   file:
     path: "{{ helm_dest }}"
     state: directory
@@ -30,6 +32,7 @@
     - helm
 
 - name: create a symbolic link
+  become: yes
   file:
     src: "{{ helm_dest }}/linux-amd64/helm"
     dest: /usr/local/bin/helm
