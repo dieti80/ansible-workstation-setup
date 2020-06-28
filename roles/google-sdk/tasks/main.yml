@@ -4,11 +4,11 @@
     method: GET
     return_content: yes
   register: test
-  
+
 - name: log response
   debug:
     msg: GPG {{ test }}
-    
+
 - name: Add Google cloud APT key
   apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -32,9 +32,9 @@
   become: yes
   package:
     name:
-    - apt-transport-https
-    - ca-certificates
-    - gnupg
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
     state: present
     update_cache: yes
   tags:
