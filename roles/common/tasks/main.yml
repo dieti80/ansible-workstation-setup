@@ -12,6 +12,7 @@
     - coreutils
     - wget
     - python3-pip
+    - httpie
     state: present
   tags:
     - system

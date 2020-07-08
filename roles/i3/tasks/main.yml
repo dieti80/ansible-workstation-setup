@@ -10,8 +10,6 @@
       - dunst
       - compton
       - powerline
-      - fonts-powerline
-      - fonts-font-awesome
     state: present
   tags:
     - i3
@@ -29,6 +27,7 @@
   package:
     name:
       - zsh
+      - powerline
       - fonts-powerline
       - fonts-font-awesome
     state: present

@@ -1,15 +1,5 @@
-- name: Debug Issue
-  uri:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    method: GET
-    return_content: yes
-  register: test
-
-- name: log response
-  debug:
-    msg: GPG {{ test }}
-
 - name: Add Google cloud APT key
+  become: yes
   apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     keyring: /usr/share/keyrings/cloud.google.gpg

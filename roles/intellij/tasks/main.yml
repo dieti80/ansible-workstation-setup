@@ -34,7 +34,7 @@
     state: directory
     mode: 0755
     owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    group: "{{ unix_group }}"
   tags:
     - development
     - ide
@@ -59,7 +59,7 @@
     state: directory
     recurse: yes
     owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    group: "{{ unix_group }}"
   tags:
     - development
     - ide
@@ -119,7 +119,7 @@
     src: "{{ idea_exec_path }}"
     dest: /usr/bin/idea
     owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    group: "{{ unix_group }}"
     state: link
 
 - name: increase the max number of watched files

@@ -2,7 +2,6 @@
 - hosts: localhost
   roles:
     - common
-    - system
     - chrome
     - spotify
     - keepass
@@ -18,3 +17,4 @@
     - rust
     - i3
     - mail
+    - system

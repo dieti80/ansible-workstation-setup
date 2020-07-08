@@ -31,7 +31,7 @@
     src: "{{ home_directory }}/configs/{{ item }}"
     dest: "{{ home_directory }}/{{ item }}"
     owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    group: "{{ unix_group }}"
     state: link
   loop:
     - .vimrc
@@ -53,7 +53,7 @@
     src: "{{ home_directory }}/configs/bin/{{ item }}"
     dest: "{{ home_directory }}/bin/{{ item }}"
     owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    group: "{{ unix_group }}"
     state: link
   loop:
     - gitlastcommit
@@ -75,7 +75,7 @@
     src: "{{ home_directory }}/configs/.config/{{ item }}"
     dest: "{{ home_directory }}/.config/{{ item }}"
     owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    group: "{{ unix_group }}"
     state: link
   loop:
     - i3

@@ -26,7 +26,7 @@
     state: directory
     recurse: yes
     owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    group: "{{ unix_group }}"
   tags:
     - container
     - helm
@@ -37,7 +37,7 @@
     src: "{{ helm_dest }}/linux-amd64/helm"
     dest: /usr/local/bin/helm
     owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    group: "{{ unix_group }}"
     state: link
   tags:
     - container
