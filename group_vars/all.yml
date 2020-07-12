@@ -1,6 +1,6 @@
 #home_directory: /home/{{ ansible_user }}
-home_directory: /{{ ansible_user }}/
-unix_group: {{ ansible_user }}
+home_directory: "/{{ ansible_user }}"
+unix_group: "{{ ansible_user }}"
 helm_dest: /opt/helm
 helm_version: 2.16.8
 openjdk_version: 11

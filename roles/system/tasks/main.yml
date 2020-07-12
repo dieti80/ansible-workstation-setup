@@ -37,6 +37,7 @@
     - .vimrc
     - .bashrc
     - .zshrc
+    - .alias
   tags:
     - system
 
@@ -59,6 +60,7 @@
     - gitlastcommit
     - gitupdatebranch
     - change-keyboard-layout
+    - screen-setup
   tags:
     - system
 
