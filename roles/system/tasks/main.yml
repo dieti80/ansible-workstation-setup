@@ -85,3 +85,6 @@
     - dunst
   tags:
     - system
+
+- name: Start gnome terimal without menu bar
+  command: gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
