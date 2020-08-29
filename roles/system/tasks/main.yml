@@ -86,10 +86,6 @@
   tags:
     - system
 
-- name: Read default-show-menubar setting
-  register: menubar
-  command: gsettings get org.gnome.Terminal.Legacy.Settings default-show-menubar
-
-- name: Start gnome terimal without menu bar
+- name: set gnome terimal without menu bar
   command: gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
-  when: menubar
+  when: not dot_files_directory.stat.exists
