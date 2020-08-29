@@ -9,7 +9,7 @@
     - kubectl
     - minikube
     - helm
-    - google-sdk
+    - gcloud
     - java
     - visualvm
     - intellij

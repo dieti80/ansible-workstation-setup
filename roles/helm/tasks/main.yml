@@ -15,6 +15,7 @@
     src: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
     dest: "{{ helm_dest }}"
     remote_src: yes
+    mode: 750
   tags:
     - container
     - helm
@@ -27,6 +28,7 @@
     recurse: yes
     owner: "{{ ansible_user }}"
     group: "{{ unix_group }}"
+    mode: 750
   tags:
     - container
     - helm
