@@ -13,6 +13,8 @@
     - wget
     - python3-pip
     - httpie
+    - xfce4-settings
+    - chromium-chromedriver
     state: present
   tags:
     - system
