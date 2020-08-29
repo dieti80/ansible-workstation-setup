@@ -45,7 +45,7 @@
   unarchive:
     src: "https://download.jetbrains.com/idea/ideaIU-{{ intellij_version }}.tar.gz"
     dest: "{{ intellij_dest }}"
-    mode: 750
+    mode: 0750
     remote_src: yes
   tags:
     - development
@@ -61,7 +61,7 @@
     recurse: yes
     owner: "{{ ansible_user }}"
     group: "{{ unix_group }}"
-    mode: 750
+    mode: 0750
   tags:
     - development
     - ide
@@ -110,6 +110,7 @@
   template:
     src: idea.desktop.j2
     dest: "/usr/share/applications/idea.desktop"
+    mode: 0750
   tags:
     - development
     - ide
