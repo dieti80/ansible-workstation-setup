@@ -19,6 +19,7 @@
     name:
       - bumblebee-status
       - configparser
+      - xkbgroup
     executable: pip3
     extra_args: --user
 
